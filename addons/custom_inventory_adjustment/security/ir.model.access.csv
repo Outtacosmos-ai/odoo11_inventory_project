@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_custom_inventory_adjustment_manager,custom.inventory.adjustment.manager,stock.model_stock_inventory,custom_inventory_adjustment.group_inventory_adjustment_manager,1,1,1,1
+access_custom_inventory_adjustment_line_manager,custom.inventory.adjustment.line.manager,stock.model_stock_inventory_line,custom_inventory_adjustment.group_inventory_adjustment_manager,1,1,1,1

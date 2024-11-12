@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_inventory_adjustment_manager" model="res.groups">
+        <field name="name">Inventory Adjustment Manager</field>
+        <field name="category_id" ref="base.module_category_warehouse_management"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
+    </record>
+
+    <record id="inventory_adjustment_rule" model="ir.rule">
+        <field name="name">Inventory Adjustment Rule</field>
+        <field name="model_id" ref="stock.model_stock_inventory"/>
+        <field name="groups" eval="[(4, ref('group_inventory_adjustment_manager'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+</odoo>

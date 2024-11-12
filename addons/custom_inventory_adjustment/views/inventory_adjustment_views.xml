@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_custom_inventory_adjustment_form" model="ir.ui.view">
+        <field name="name">stock.inventory.form.custom</field>
+        <field name="model">stock.inventory</field>
+        <field name="inherit_id" ref="stock.view_inventory_form"/>
+        <field name="arch" type="xml">
+            <field name="date" position="after">
+                <field name="adjustment_reason"/>
+            </field>
+            <notebook position="inside">
+                <page string="Custom Notes">
+                    <field name="custom_notes"/>
+                </page>
+            </notebook>
+            <xpath expr="//field[@name='line_ids']/tree//field[@name='product_qty']" position="after">
+                <field name="custom_remarks"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_custom_inventory_adjustment" model="ir.actions.act_window">
+        <field name="name">Custom Inventory Adjustments</field>
+        <field name="res_model">stock.inventory</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="stock.view_inventory_tree"/>
+        <field name="search_view_id" ref="stock.view_inventory_filter"/>
+        <field name="context">{'custom_inventory': True}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to start a new inventory adjustment.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_custom_inventory_adjustment"
+              name="Custom Inventory Adjustments"
+              parent="stock.menu_stock_inventory_control"
+              action="action_custom_inventory_adjustment"
+              groups="custom_inventory_adjustment.group_inventory_adjustment_manager"/>
+</odoo>
